@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gorilla Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background-color: #1C2127;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #12161c;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+    .title {
+      font-size: 2.2rem;
+      color: #6d9e74;
+      letter-spacing: 1px;
+    }
+    .dev-tag {
+      font-size: 0.65rem;
+      background-color: #f5c542;
+      color: #121829;
+      padding: 3px 8px;
+      border-radius: 12px;
+      margin-left: 10px;
+      vertical-align: middle;
+      font-weight: 600;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-input {
+      padding: 10px 15px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #1e1e1e;
+      color: #888;
+      font-size: 1rem;
+      width: 220px;
+    }
+    .credits-button {
+      padding: 10px 15px;
+      background-color: #6d9e74;
+      color: #121829;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .credits-button:hover {
+      background-color: #5b8462;
+      transform: scale(1.05);
+    }
+    .contrast-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      padding: 10px 15px;
+      background-color: #6d9e74;
+      color: #121829;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .contrast-container:hover {
+      background-color: #5b8462;
+      transform: scale(1.05);
+    }
+    .toggle-box {
+      width: 36px;
+      height: 20px;
+      background-color: #121829;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      box-sizing: border-box;
+    }
+    .toggle-knob {
+      width: 14px;
+      height: 14px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      transition: transform 0.3s;
+      transform: translateX(0);
+    }
+    .high-contrast .toggle-knob {
+      transform: translateX(16px);
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      padding: 60px 80px;
+      flex-grow: 1;
+      background-color: #181d22;
+    }
+    .outline-section {
+      border: 2px solid #6d9e74;
+      border-radius: 15px;
+      padding: 30px 25px 50px;
+      color: #6d9e74;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background-color: #20252b;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .outline-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+    .outline-title {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    .sub-button {
+      width: 90%;
+      max-width: 260px;
+      margin-bottom: 10px;
+      background-color: #6d9e74;
+      color: #121829;
+      padding: 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      display: block;
+    }
+    .sub-button span:first-child {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    .sub-button span:last-child {
+      font-size: 0.85rem;
+      color: #111;
+    }
+    .sub-button:hover {
+      background-color: #5b8462;
+      transform: scale(0.98);
+    }
+    .high-contrast {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
+    .high-contrast .header {
+      background-color: #000 !important;
+    }
+    .high-contrast .outline-section {
+      background-color: #111 !important;
+      border-color: #fff !important;
+      color: #fff !important;
+    }
+    .high-contrast .sub-button {
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+  </style>
+  <script>
+    function toggleContrast() {
+      document.body.classList.toggle('high-contrast');
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+      <img src="your-logo-url-here.png" alt="Logo" class="logo">
+      <div>
+        <div class="title">Gorilla Guide <span class="dev-tag">Beta</span></div>
+        <div style="font-size: 1rem; color: #ccc; margin-top: 2px;">A guide to learning and improving your Gorilla Tag skills</div>
+      </div>
+    </div>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search coming soon..." disabled>
+      <a href="#" class="credits-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Credits</a>
+      <div class="contrast-container" onclick="toggleContrast()">
+        High Contrast
+        <div class="toggle-box">
+          <div class="toggle-knob"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="button-grid">
+    <div class="outline-section">
+      <div class="outline-title">Movement Basics</div>
+      <a href="ground-movement.html" class="sub-button"><span>Ground Movement</span><span>Basics of flat terrain movement</span></a>
+      <a href="jumping-strategies.html" class="sub-button"><span>Jumping Strategies</span><span>Improve height and distance in jumps</span></a>
+      <a href="pinch-climbing.html" class="sub-button"><span>Pinch Climbing</span><span>Climb using two-hand pinching motions</span></a>
+    </div>
+    <div class="outline-section">
+      <div class="outline-title">Wall Climbing</div>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Vertical Climb</span><span>Straight upward climbing technique</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Side Wall Bounce</span><span>Wall-to-wall bouncing movement</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Wall Scaling</span><span>Advanced climbing for tall walls</span></a>
+    </div>
+    <div class="outline-section">
+      <div class="outline-title">Swimming</div>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Pendulum Swimming</span><span>Rhythmic swinging swim technique</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Dive Turning</span><span>Efficient turns while underwater</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Surface Skimming</span><span>Stay fast while close to the surface</span></a>
+    </div>
+    <div class="outline-section">
+      <div class="outline-title">Wall Carving</div>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Wall Surfing</span><span>Ride walls with smooth flow</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Advanced Carving</span><span>Refined methods for agile carving</span></a>
+      <a href="#" class="sub-button" style="opacity: 0.5; cursor: not-allowed; pointer-events: none;"><span>Lucio Running</span><span>Fast hybrid wall running style</span></a>
+    </div>
+  </div>
+  <div style="text-align:center; padding: 40px 20px; background-color: #1C2127;">
+    <div style="font-size: 1.3rem; color: #6d9e74; font-weight: bold;">🚀 Coming Soon: Orion Guide</div>
+    <div style="color: #ccc; font-size: 1rem; margin-top: 8px;">A new site dedicated to providing guides and tutorials for Orion Drift!</div>
+    <div style="margin-top: 20px;">
+      <a href="#" style="padding: 10px 15px; background-color: #6d9e74; color: #111; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1rem; display: inline-block; margin-right: 10px; opacity: 0.5; cursor: not-allowed; pointer-events: none;">Request a Guide</a>
+      <a href="https://discord.gg/tQSUf4v97m" target="_blank" style="padding: 10px 15px; background-color: #6d9e74; color: #111; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: background-color 0.2s ease, transform 0.2s ease; display: inline-block; transform: scale(1);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Join our Discord</a>
+      <span style='color: #888; font-size: 0.95rem; margin-left: 15px;'>Website created by <strong>Spacey</strong></span>
+    </div>
+  </div>
+</body>
+</html>
